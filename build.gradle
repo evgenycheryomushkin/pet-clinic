@@ -2,18 +2,24 @@ plugins {
     id 'org.springframework.boot' version '2.5.5'
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'idea'
 }
 
 group = 'com.cheryomushkin'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
+def mapstructVersion = '1.4.2.Final'
+
+//systemProp {
+//    file.encoding='utf-8'
+//}
+
 repositories {
     mavenCentral()
 }
 
 dependencies {
-    def mapstructVersion = "1.4.2.Final"
     implementation 'org.springframework.boot:spring-boot-starter-actuator'
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
@@ -41,4 +47,12 @@ compileJava {
             '-Amapstruct.defaultComponentModel=spring',
             '-Amapstruct.unmappedTargetPolicy=ERROR'
     ]
+    options.encoding = 'UTF-8'
+}
+
+idea {
+    module {
+        downloadJavadoc = true
+        downloadSources = true
+    }
 }
