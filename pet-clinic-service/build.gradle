@@ -1,0 +1,12 @@
+plugins {
+    id 'java-conventions'
+    id 'org.springframework.boot' version "${springBootVersion}"
+    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
+    id 'spring-dependencies'
+}
+
+dependencies {
+    implementation project(':pet-clinic-domain')
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+}

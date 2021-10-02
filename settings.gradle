@@ -1,1 +1,3 @@
 rootProject.name = 'pet-clinic'
+include 'pet-clinic-domain'
+include 'pet-clinic-service'
