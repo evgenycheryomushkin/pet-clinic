@@ -1,3 +1,34 @@
 rootProject.name = 'pet-clinic'
+
+enableFeaturePreview('VERSION_CATALOGS')
+
+dependencyResolutionManagement {
+    versionCatalogs {
+        libs {
+            version('mapstruct', '1.4.2.Final')
+
+            alias('lombok').to('org.projectlombok', 'lombok').withoutVersion()
+            alias('mapstruct').to('org.mapstruct', 'mapstruct').versionRef('mapstruct')
+            alias('mapstruct-processor').to('org.mapstruct', 'mapstruct-processor').versionRef('mapstruct')
+            alias('lombok-mapstruct-binding').to('org.projectlombok', 'lombok-mapstruct-binding').version('0.2.0')
+
+            alias('flyway-core').to('org.flywaydb', 'flyway-core').withoutVersion()
+            alias('h2').to('com.h2database', 'h2').withoutVersion()
+
+            // spring
+            alias('spring-boot').toPluginId('org.springframework.boot').version('2.5.5')
+            alias('spring-dm').toPluginId('io.spring.dependency-management').version('1.0.11.RELEASE')
+
+            alias('spring-boot-starter-test').to('org.springframework.boot', 'spring-boot-starter-test').withoutVersion()
+            alias('spring-boot-starter-web').to('org.springframework.boot', 'spring-boot-starter-web').withoutVersion()
+            alias('spring-boot-starter-validation').to('org.springframework.boot', 'spring-boot-starter-validation').withoutVersion()
+
+            alias('spring-boot-starter-thymeleaf').to('org.springframework.boot', 'spring-boot-starter-thymeleaf').withoutVersion()
+            alias('spring-boot-starter-data-jpa').to('org.springframework.boot', 'spring-boot-starter-data-jpa').withoutVersion()
+        }
+    }
+}
+
+include 'pet-clinic-api'
 include 'pet-clinic-domain'
 include 'pet-clinic-service'

@@ -1,12 +1,32 @@
 plugins {
     id 'java-conventions'
-    id 'org.springframework.boot' version "${springBootVersion}"
-    id 'io.spring.dependency-management' version "${springDependencyManagementVersion}"
-    id 'spring-dependencies'
+    alias(libs.plugins.spring.boot)
+    alias(libs.plugins.spring.dm)
 }
 
 dependencies {
+    implementation project(':pet-clinic-api')
     implementation project(':pet-clinic-domain')
-    implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+
+    compileOnly libs.lombok
+    compileOnly libs.mapstruct
+    annotationProcessor libs.lombok
+    annotationProcessor libs.lombok.mapstruct.binding
+    annotationProcessor libs.mapstruct.processor
+
+    implementation libs.spring.boot.starter.thymeleaf
+    testImplementation libs.spring.boot.starter.test
+}
+
+compileJava {
+    options.compilerArgs += [
+            '-Amapstruct.defaultComponentModel=spring',
+            '-Amapstruct.unmappedTargetPolicy=ERROR'
+    ]
+}
+
+tasks.withType(JavaCompile) {
+    doFirst {
+        println "AnnotationProcessorPath for $name is ${options.getAnnotationProcessorPath().getFiles()}"
+    }
 }
