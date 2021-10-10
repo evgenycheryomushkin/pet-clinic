@@ -12,6 +12,10 @@ repositories {
     mavenCentral()
 }
 
+dependencies {
+    compileOnly libs.jetbrains.annotaions
+}
+
 test {
     systemProperty "file.encoding", "utf-8"
     useJUnitPlatform()
