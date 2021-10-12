@@ -14,8 +14,15 @@ dependencies {
     annotationProcessor libs.lombok.mapstruct.binding
     annotationProcessor libs.mapstruct.processor
 
+    developmentOnly libs.spring.boot.devtools
+
     implementation libs.spring.boot.starter.thymeleaf
+    implementation libs.spring.boot.starter.actuator
     testImplementation libs.spring.boot.starter.test
+}
+
+jar {
+    enabled = false
 }
 
 compileJava {

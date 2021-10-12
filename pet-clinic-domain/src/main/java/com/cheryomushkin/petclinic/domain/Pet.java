@@ -2,8 +2,8 @@ package com.cheryomushkin.petclinic.domain;
 
 import lombok.Builder;
 import lombok.Data;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+import org.springframework.lang.NonNull;
+import org.springframework.lang.Nullable;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,7 @@ import java.time.LocalDate;
 @Builder
 public class Pet {
     @Nullable String name;
-    @NotNull PetType petType;
-    @NotNull Owner owner;
-    @NotNull LocalDate birthday;
+    @NonNull PetType petType;
+    @NonNull Owner owner;
+    @NonNull LocalDate birthday;
 }

@@ -2,11 +2,11 @@ package com.cheryomushkin.petclinic.domain;
 
 import lombok.Builder;
 import lombok.Data;
-import org.jetbrains.annotations.NotNull;
+import org.springframework.lang.NonNull;
 
 @Data
 @Builder
 public class Vet {
-    @NotNull String firstName;
-    @NotNull String lastName;
+    @NonNull String firstName;
+    @NonNull String lastName;
 }
