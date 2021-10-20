@@ -5,5 +5,5 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.UUID;
 
-public interface OwnerRepository extends CrudRepository<Owner, UUID> {
+public interface OwnerRepository extends CrudRepository<Owner, Long> {
 }

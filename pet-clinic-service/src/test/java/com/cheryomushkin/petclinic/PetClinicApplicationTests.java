@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.time.OffsetDateTime;
 
 @SpringBootTest
 class PetClinicApplicationTests {
@@ -24,7 +25,7 @@ class PetClinicApplicationTests {
     @Test
     public void testMapping() {
         Owner owner = new Owner("a", "b");
-        Pet pet =  Pet.builder().owner(owner).petType(PetType.CAT).birthday(LocalDate.now()).build();
+        Pet pet =  new Pet(PetType.OWL, owner, OffsetDateTime.now());
         PetDto petDto = converter.mapPet(pet);
     }
 }
