@@ -2,7 +2,6 @@ package com.cheryomushkin.petclinic.repository;
 
 import com.cheryomushkin.petclinic.domain.Owner;
 import com.cheryomushkin.petclinic.domain.Pet;
-import com.cheryomushkin.petclinic.domain.PetType;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,19 +16,21 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class RepositoryTests {
-
     @Autowired
     OwnerRepository ownerRepository;
-
     @Autowired
     PetRepository petRepository;
+    @Autowired
+    PetTypeRepository petTypeRepository;
+
     private Long ownerId;
     private Long sowaId;
 
     @BeforeEach
     public void beforeEach() {
         Owner o = new Owner("Гарри", "Поттер");
-        Pet sowa = new Pet(PetType.OWL, o, OffsetDateTime.parse("1950-12-03T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+        Pet sowa = new Pet(
+                petTypeRepository.findFirstByName("OWL"), o, OffsetDateTime.parse("1950-12-03T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
         sowa.setName("Букля");
         o.getPets().add(sowa);
         ownerId = ownerRepository.save(o).getId();
@@ -41,7 +42,7 @@ public class RepositoryTests {
         Optional<Pet> sowa = petRepository.findById(sowaId);
         assertTrue(sowa.isPresent());
         assertEquals("Букля", sowa.get().getName());
-        assertEquals(PetType.OWL, sowa.get().getPetType());
+        assertEquals(petTypeRepository.findFirstByName("OWL"), sowa.get().getPetType());
     }
 
     @Test

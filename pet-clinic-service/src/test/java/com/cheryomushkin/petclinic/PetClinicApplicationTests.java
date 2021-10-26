@@ -9,7 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.LocalDate;
 import java.time.OffsetDateTime;
 
 @SpringBootTest
@@ -25,7 +24,7 @@ class PetClinicApplicationTests {
     @Test
     public void testMapping() {
         Owner owner = new Owner("a", "b");
-        Pet pet =  new Pet(PetType.OWL, owner, OffsetDateTime.now());
+        Pet pet =  new Pet(new PetType("OWL"), owner, OffsetDateTime.now());
         PetDto petDto = converter.mapPet(pet);
     }
 }

@@ -1,7 +1,6 @@
 package com.cheryomushkin.petclinic.domain;
 
 import lombok.AccessLevel;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
@@ -12,8 +11,6 @@ import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,6 +30,7 @@ public class Pet {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     @Nullable String name;
+    @ManyToOne
     @NonNull @NotNull PetType petType;
     @ManyToOne
     @NonNull @NotNull Owner owner;
