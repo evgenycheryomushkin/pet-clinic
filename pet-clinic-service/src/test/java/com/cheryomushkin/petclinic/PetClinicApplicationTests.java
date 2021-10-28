@@ -1,6 +1,6 @@
 package com.cheryomushkin.petclinic;
 
-import com.cheryomushkin.petclinic.converter.Converter;
+import com.cheryomushkin.petclinic.converters.Converter;
 import com.cheryomushkin.petclinic.domain.Owner;
 import com.cheryomushkin.petclinic.domain.Pet;
 import com.cheryomushkin.petclinic.domain.PetType;

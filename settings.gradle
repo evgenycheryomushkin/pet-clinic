@@ -15,6 +15,7 @@ dependencyResolutionManagement {
             alias('flyway-core').to('org.flywaydb', 'flyway-core').withoutVersion()
             alias('h2').to('com.h2database', 'h2').withoutVersion()
 
+            alias('jsr305').to('com.google.code.findbugs', 'jsr305').version('3.0.2')
 
             // spring
             alias('spring-boot').toPluginId('org.springframework.boot').version('2.5.5')

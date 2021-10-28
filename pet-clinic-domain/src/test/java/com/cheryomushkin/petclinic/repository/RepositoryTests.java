@@ -30,7 +30,7 @@ public class RepositoryTests {
     public void beforeEach() {
         Owner o = new Owner("Гарри", "Поттер");
         Pet sowa = new Pet(
-                petTypeRepository.findFirstByName("OWL"), o, OffsetDateTime.parse("1950-12-03T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+                petTypeRepository.findFirstByName("OWL"), o, OffsetDateTime.parse("1989-01-03T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
         sowa.setName("Букля");
         o.getPets().add(sowa);
         ownerId = ownerRepository.save(o).getId();

@@ -2,6 +2,7 @@ plugins {
     id 'java-conventions'
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dm)
+    id 'database-conventions'
 }
 
 dependencies {
@@ -16,6 +17,7 @@ dependencies {
 
     developmentOnly libs.spring.boot.devtools
 
+    implementation libs.spring.boot.starter.web
     implementation libs.spring.boot.starter.thymeleaf
     implementation libs.spring.boot.starter.actuator
     testImplementation libs.spring.boot.starter.test

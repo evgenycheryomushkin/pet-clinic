@@ -1,4 +1,4 @@
-package com.cheryomushkin.petclinic.converter;
+package com.cheryomushkin.petclinic.converters;
 
 import com.cheryomushkin.petclinic.domain.Pet;
 import com.cheryomushkin.petclinic.transport.PetDto;
