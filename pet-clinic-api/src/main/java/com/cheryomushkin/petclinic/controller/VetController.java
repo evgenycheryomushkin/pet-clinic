@@ -1,12 +1,11 @@
-package com.cheryomushkin.petclinic.controllers;
+package com.cheryomushkin.petclinic.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class IndexController {
+@RequestMapping("/vets")
+public interface VetController {
     @RequestMapping("")
-    public String index() {
-        return "index";
-    }
+    String vets();
 }

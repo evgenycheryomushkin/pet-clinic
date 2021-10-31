@@ -4,8 +4,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/owners")
-public interface OwnerController {
+public interface IndexController {
     @RequestMapping("")
-    public String owners();
+    String index();
 }
