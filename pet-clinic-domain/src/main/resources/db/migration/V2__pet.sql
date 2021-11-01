@@ -5,6 +5,7 @@ create table pet_type (
 insert into pet_type(name) values ('CAT');
 insert into pet_type(name) values ('DOG');
 insert into pet_type(name) values ('OWL');
+insert into pet_type(name) values ('RAT');
 
 create table pet (
     id identity,
