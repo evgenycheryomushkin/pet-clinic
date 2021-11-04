@@ -8,11 +8,8 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
 @Data @Builder
-public class OwnerDto {
-    @NotNull @NonNull
-    Long id;
-    @NotNull @NotEmpty @NonNull
-    String firstName;
-    @NotNull @NotEmpty @NonNull
-    String lastName;
+public class VetDto {
+    @NotNull @NonNull Long id;
+    @NonNull @NotNull @NotEmpty String firstName;
+    @NotNull @NonNull @NotEmpty String lastName;
 }
