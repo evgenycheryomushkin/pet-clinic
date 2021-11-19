@@ -28,7 +28,12 @@ public class RepositoryTests {
 
     @BeforeEach
     public void beforeEach() {
-        Owner o = new Owner("Гарри", "Поттер");
+        Owner o = new Owner(
+                "Гарри",
+                "Поттер",
+                "ул. Тисовая, 4",
+                "Little Whinging",
+                "0");
         Pet sowa = new Pet(
                 petTypeRepository.findFirstByName("OWL"), o, OffsetDateTime.parse("1989-01-03T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
         sowa.setName("Букля");
