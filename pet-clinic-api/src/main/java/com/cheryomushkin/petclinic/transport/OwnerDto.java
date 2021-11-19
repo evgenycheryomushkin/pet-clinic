@@ -1,7 +1,8 @@
 package com.cheryomushkin.petclinic.transport;
 
 import lombok.Builder;
-import lombok.Data;
+import lombok.Value;
+import lombok.extern.jackson.Jacksonized;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
@@ -9,7 +10,9 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-@Data @Builder
+@Builder
+@Value
+@Jacksonized
 public class OwnerDto {
     @Nullable
     Long id;
