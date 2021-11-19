@@ -18,7 +18,6 @@ dependencies {
     developmentOnly libs.spring.boot.devtools
 
     implementation libs.spring.boot.starter.web
-    implementation libs.spring.boot.starter.thymeleaf
     implementation libs.spring.boot.starter.actuator
     testImplementation libs.spring.boot.starter.test
 }
