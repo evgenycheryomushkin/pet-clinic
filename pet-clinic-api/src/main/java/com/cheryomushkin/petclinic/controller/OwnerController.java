@@ -1,12 +1,11 @@
 package com.cheryomushkin.petclinic.controller;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import com.cheryomushkin.petclinic.transport.OwnerDto;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Controller
-@RequestMapping("/owners")
+@RequestMapping("/petclinic/api/owners")
 public interface OwnerController {
-    @RequestMapping("")
-    String owners(Model model);
+    @GetMapping("")
+    Iterable<OwnerDto> owners();
 }

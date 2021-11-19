@@ -9,6 +9,7 @@ dependencies {
     annotationProcessor libs.lombok
     implementation libs.spring.boot.starter.web
     implementation libs.spring.boot.starter.validation
+    implementation libs.jsr305
     testImplementation libs.spring.boot.starter.test
 }
 
