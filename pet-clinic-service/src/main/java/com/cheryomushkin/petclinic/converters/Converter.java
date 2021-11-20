@@ -13,4 +13,6 @@ public interface Converter {
     PetDto mapPet(Pet pet);
     Iterable<OwnerDto> mapOwners(Iterable<Owner> owners);
     Iterable<VetDto> mapVets(Iterable<Vet> vets);
+
+    OwnerDto mapOwner(Owner owner);
 }

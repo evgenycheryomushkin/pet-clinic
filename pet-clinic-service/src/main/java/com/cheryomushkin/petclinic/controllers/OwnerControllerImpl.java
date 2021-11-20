@@ -6,19 +6,32 @@ import com.cheryomushkin.petclinic.domain.Owner;
 import com.cheryomushkin.petclinic.repository.OwnerRepository;
 import com.cheryomushkin.petclinic.transport.OwnerDto;
 import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+import java.util.Optional;
+
+@RestController
 @RequiredArgsConstructor
 public class OwnerControllerImpl implements OwnerController {
-    private final OwnerRepository ownerRepository;
     private final Converter converter;
+    private final OwnerRepository ownerRepository;
 
-    public String owners(Model model) {
+    @Override
+    public Iterable<OwnerDto> owners() {
         Iterable<Owner> owners = ownerRepository.findAll();
-        Iterable<OwnerDto> ownerDtos = converter.mapOwners(owners);
-        model.addAttribute("owners", ownerDtos);
-        return "owners/index";
+        return converter.mapOwners(owners);
     }
+
+    @Override
+    public OwnerDto getOwnerById(Long ownerId) {
+        Optional<Owner> owner = ownerRepository.findById(ownerId);
+        if (owner.isEmpty()) return null;
+        return converter.mapOwner(owner.get());
+    }
+
+    @Override
+    public Long addOwner(OwnerDto ownerDto) {
+        return 0L;
+    }
+
 }
