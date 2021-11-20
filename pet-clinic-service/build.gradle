@@ -1,7 +1,7 @@
 plugins {
-    id 'java-conventions'
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dm)
+    id 'java-conventions'
     id 'database-conventions'
 }
 
