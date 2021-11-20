@@ -1,6 +1,6 @@
 package com.cheryomushkin.petclinic;
 
-import com.cheryomushkin.petclinic.transport.OwnerDto;
+import com.cheryomushkin.petclinic.transport.GetOwnerDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class ValidationMVCTests {
 
     @Test
     public void testValidation() throws Exception {
-        OwnerDto ownerDto = OwnerDto.builder()
+        GetOwnerDto ownerDto = GetOwnerDto.builder()
                         .firstName("Гарри").lastName("Поттер")
                         .address("ул. Тисовая 4").city("Little Winging")
                         .telephone("")//error here
