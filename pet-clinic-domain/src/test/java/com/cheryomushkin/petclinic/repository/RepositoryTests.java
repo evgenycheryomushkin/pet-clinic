@@ -35,7 +35,7 @@ public class RepositoryTests {
                 "Little Whinging",
                 "0");
         Pet sowa = new Pet(
-                petTypeRepository.findFirstByName("OWL"), o, OffsetDateTime.parse("1989-01-03T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+                petTypeRepository.findFirstByName("Сова"), o, OffsetDateTime.parse("1989-01-03T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
         sowa.setName("Букля");
         o.getPets().add(sowa);
         ownerId = ownerRepository.save(o).getId();
@@ -47,7 +47,7 @@ public class RepositoryTests {
         Optional<Pet> sowa = petRepository.findById(sowaId);
         assertTrue(sowa.isPresent());
         assertEquals("Букля", sowa.get().getName());
-        assertEquals(petTypeRepository.findFirstByName("OWL"), sowa.get().getType());
+        assertEquals(petTypeRepository.findFirstByName("Сова"), sowa.get().getType());
     }
 
     @Test
