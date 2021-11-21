@@ -31,10 +31,10 @@ public class Pet {
     Long id;
     @Nullable String name;
     @ManyToOne
-    @NonNull @NotNull PetType petType;
+    @NonNull @NotNull PetType type;
     @ManyToOne
     @NonNull @NotNull Owner owner;
-    @NonNull @NotNull OffsetDateTime birthday;
+    @NonNull @NotNull OffsetDateTime birthDate;
 
     @Override
     public boolean equals(Object o) {

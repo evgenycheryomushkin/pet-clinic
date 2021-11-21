@@ -12,6 +12,6 @@ import java.time.OffsetDateTime;
 public class GetOwnerPetDto {
     Long id;
     String name;
-    GetPetTypeDto petType;
-    OffsetDateTime birthday;
+    GetPetTypeDto type;
+    OffsetDateTime birthDate;
 }

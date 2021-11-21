@@ -47,7 +47,7 @@ public class RepositoryTests {
         Optional<Pet> sowa = petRepository.findById(sowaId);
         assertTrue(sowa.isPresent());
         assertEquals("Букля", sowa.get().getName());
-        assertEquals(petTypeRepository.findFirstByName("OWL"), sowa.get().getPetType());
+        assertEquals(petTypeRepository.findFirstByName("OWL"), sowa.get().getType());
     }
 
     @Test

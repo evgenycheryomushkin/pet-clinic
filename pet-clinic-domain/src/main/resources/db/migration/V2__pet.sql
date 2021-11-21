@@ -10,9 +10,9 @@ insert into pet_type(name) values ('RAT');
 create table pet (
     id identity,
     name varchar(255),
-    pet_type_id long,
+    type_id long,
     owner_id long,
-    birthday timestamp,
+    birth_date timestamp,
     foreign key (owner_id) references owner(id),
-    foreign key (pet_type_id) references pet_type(id)
+    foreign key (type_id) references pet_type(id)
 );
