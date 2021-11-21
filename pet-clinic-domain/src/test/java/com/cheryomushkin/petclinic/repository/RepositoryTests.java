@@ -7,8 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import java.time.OffsetDateTime;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +34,7 @@ public class RepositoryTests {
                 "Little Whinging",
                 "0");
         Pet sowa = new Pet(
-                petTypeRepository.findFirstByName("Сова"), o, OffsetDateTime.parse("1989-01-03T00:00:00+01:00", DateTimeFormatter.ISO_OFFSET_DATE_TIME));
+                petTypeRepository.findFirstByName("Сова"), o, LocalDate.now());
         sowa.setName("Букля");
         o.getPets().add(sowa);
         ownerId = ownerRepository.save(o).getId();

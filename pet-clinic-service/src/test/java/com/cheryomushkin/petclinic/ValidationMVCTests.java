@@ -1,6 +1,6 @@
 package com.cheryomushkin.petclinic;
 
-import com.cheryomushkin.petclinic.transport.GetOwnerDto;
+import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

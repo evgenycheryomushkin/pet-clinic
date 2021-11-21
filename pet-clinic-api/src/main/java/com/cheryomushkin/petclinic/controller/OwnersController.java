@@ -1,7 +1,7 @@
 package com.cheryomushkin.petclinic.controller;
 
-import com.cheryomushkin.petclinic.transport.AddOwnerDto;
-import com.cheryomushkin.petclinic.transport.GetOwnerDto;
+import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
+import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +15,7 @@ import javax.validation.Valid;
 
 @RequestMapping("/petclinic/api/owners")
 @Validated
-public interface OwnerController {
+public interface OwnersController {
     @GetMapping("")
     Iterable<GetOwnerDto> list();
     @GetMapping("/{id}")

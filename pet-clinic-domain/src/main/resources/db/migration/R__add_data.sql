@@ -10,25 +10,27 @@ insert into owner (first_name, last_name, address, city, telephone) values ('Л�
 insert into owner (first_name, last_name, address, city, telephone) values ('Сириус', 'Блэк', 'Площадь Гриммо, 12', 'Лондон', '0');
 
 delete from pet_type;
-insert into pet_type(name) values ('Кот');       // 1
-insert into pet_type(name) values ('Собака');    // 2
-insert into pet_type(name) values ('Сова');      // 3
-insert into pet_type(name) values ('Крыса');     // 4
-insert into pet_type(name) values ('Жаба');      // 5
-insert into pet_type(name) values ('Гиппогриф'); // 6
-insert into pet_type(name) values ('Феникс');    // 7
-insert into pet_type(name) values ('Змея');      // 8
+insert into pet_type(name)
+values ('Кот'),       // 1
+       ('Собака'),    // 2
+       ('Сова'),      // 3
+       ('Крыса'),     // 4
+       ('Жаба'),      // 5
+       ('Гиппогриф'), // 6
+       ('Феникс'),    // 7
+       ('Змея');      // 8
 
 delete from pet;
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Букля', 3, 1, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Живоглот', 1, 2, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Короста', 4, 3, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Сычик', 3, 3, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Тревор', 5, 4, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Стрелка', 3, 5, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Фоукс', 7, 6, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Ногайна', 8, 7, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
-insert into pet (name, type_id, owner_id, birth_date) values ( 'Клювокрыл', 6, 8, parsedatetime('1989-01-03 00:00:00.000', 'dd-MM-yyyy hh:mm:ss.SS') );
+insert into pet (name, type_id, owner_id, birth_date)
+values ('Букля', 3, 1, date '1989-01-01'),
+       ('Живоглот', 1, 2, date '1989-01-01'),
+       ('Короста', 4, 3, date '1989-01-01'),
+       ('Сычик', 3, 3, date '1989-01-01'),
+       ('Тревор', 5, 4, date '1989-01-01'),
+       ('Стрелка', 3, 5, date '1989-01-01'),
+       ('Фоукс', 7, 6, date '1989-01-01'),
+       ('Ногайна', 8, 7, date '1989-01-01'),
+       ('Клювокрыл', 6, 8, date '1989-01-01');
 
 
 delete from vet;

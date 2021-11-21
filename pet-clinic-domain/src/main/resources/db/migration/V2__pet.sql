@@ -8,7 +8,7 @@ create table pet (
     name varchar(255),
     type_id long,
     owner_id long,
-    birth_date timestamp,
+    birth_date date,
     foreign key (owner_id) references owner(id),
     foreign key (type_id) references pet_type(id)
 );

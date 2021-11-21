@@ -1,8 +1,8 @@
 package com.cheryomushkin.petclinic.converters;
 
 import com.cheryomushkin.petclinic.domain.Owner;
-import com.cheryomushkin.petclinic.transport.AddOwnerDto;
-import com.cheryomushkin.petclinic.transport.GetOwnerDto;
+import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
+import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

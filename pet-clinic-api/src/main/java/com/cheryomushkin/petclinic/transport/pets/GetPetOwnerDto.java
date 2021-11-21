@@ -1,4 +1,4 @@
-package com.cheryomushkin.petclinic.transport;
+package com.cheryomushkin.petclinic.transport.pets;
 
 import lombok.Builder;
 import lombok.Value;
@@ -7,7 +7,8 @@ import lombok.extern.jackson.Jacksonized;
 @Builder
 @Value
 @Jacksonized
-public class GetPetTypeDto {
+public class GetPetOwnerDto {
     Long id;
-    String name;
+    String firstName;
+    String lastName;
 }

@@ -1,11 +1,11 @@
 package com.cheryomushkin.petclinic.controllers;
 
-import com.cheryomushkin.petclinic.controller.OwnerController;
+import com.cheryomushkin.petclinic.controller.OwnersController;
 import com.cheryomushkin.petclinic.converters.OwnerConverter;
 import com.cheryomushkin.petclinic.domain.Owner;
 import com.cheryomushkin.petclinic.repository.OwnerRepository;
-import com.cheryomushkin.petclinic.transport.AddOwnerDto;
-import com.cheryomushkin.petclinic.transport.GetOwnerDto;
+import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
+import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,7 +13,7 @@ import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
-public class OwnerControllerImpl implements OwnerController {
+public class OwnersControllerImpl implements OwnersController {
     private final OwnerConverter ownerConverter;
     private final OwnerRepository ownerRepository;
 
