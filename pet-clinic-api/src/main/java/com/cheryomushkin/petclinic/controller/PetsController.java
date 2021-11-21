@@ -1,5 +1,6 @@
 package com.cheryomushkin.petclinic.controller;
 
+import com.cheryomushkin.petclinic.transport.pets.AddPetDto;
 import com.cheryomushkin.petclinic.transport.pets.GetPetDto;
 import com.cheryomushkin.petclinic.transport.pets.UpdatePetDto;
 import org.springframework.validation.annotation.Validated;
@@ -14,4 +15,8 @@ public interface PetsController {
     GetPetDto getById(@PathVariable Long id);
     @PutMapping("/{id}")
     void put(@PathVariable Long id, @RequestBody @Valid UpdatePetDto updatePetDto);
+    @DeleteMapping("/{id}")
+    void delete(@PathVariable Long id);
+    @PostMapping("")
+    void add(@RequestBody @Valid AddPetDto addPetDto);
 }
