@@ -19,7 +19,9 @@ public class PetClinicApplication {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(@NonNull CorsRegistry registry) {
-                registry.addMapping("/petclinic/api/**").allowedOrigins("http://localhost:4200");
+                registry.addMapping("/petclinic/api/**")
+                        .allowedMethods("*")
+                        .allowedOrigins("http://localhost:4200");
             }
         };
     }

@@ -1,9 +1,18 @@
 logging:
   level:
     web: debug
+    org:
+      hibernate:
+        type: trace
 spring:
   mvc:
     log-request-details: true
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+        use_sql_comments: true
+
 server:
   port: 9966
-
