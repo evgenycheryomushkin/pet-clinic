@@ -13,13 +13,15 @@ import org.mapstruct.Mapping;
 @Mapper
 public interface PetConverter {
     Iterable<PetTypeDto> mapPetTypes(Iterable<PetType> petTypes);
-    GetPetDto mapPet(Pet pet);
+
+    @Mapping(target = "id", source = "pet.id")
+    GetPetDto mapPet(Pet pet, Owner owner);
 
     @Mapping(target = "id", ignore = true)
-    Pet mapUpdatePetDto(UpdatePetDto updatePetDto, Owner owner);
+    @Mapping(target = "ownerId", source = "owner.id")
+    Pet mapUpdatePetDto(UpdatePetDto updatePetDto);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "name", source = "addPetDto.petName")
-    @Mapping(target = "owner", source = "owner")
-    Pet mapAddPetDto(AddPetDto addPetDto, Owner owner);
+    Pet mapAddPetDto(AddPetDto addPetDto, Long ownerId);
 }

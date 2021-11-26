@@ -40,8 +40,8 @@ public class Owner {
     @NonNull @NotNull @NotEmpty
     String telephone;
 
-    @Nullable
-    @OneToMany(mappedBy = "owner")
+    @NotNull @NonNull
+    @OneToMany(mappedBy = "ownerId")
     List<Pet> pets = new ArrayList<>();
 
     @Override

@@ -12,7 +12,6 @@ import com.cheryomushkin.petclinic.transport.pets.UpdatePetDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.validation.constraints.NotNull;
 import java.util.Optional;
 
 @RestController
@@ -26,14 +25,13 @@ public class PetsControllerImpl implements PetsController {
     public GetPetDto getById(Long id) {
         Optional<Pet> pet = petRepository.findById(id);
         if (pet.isEmpty()) return null;
-        return petConverter.mapPet(pet.get());
+        Optional<Owner> owner = ownerRepository.findById(pet.get().getOwnerId());
+        return petConverter.mapPet(pet.get(), owner.get());
     }
 
     @Override
-    public void put(Long id, UpdatePetDto addPetDto) {
-        // todo find better way
-        @NotNull Owner owner = petRepository.findById(id).get().getOwner();
-        Pet pet = petConverter.mapUpdatePetDto(addPetDto, owner);
+    public void update(Long id, UpdatePetDto updatePetDto) {
+        Pet pet = petConverter.mapUpdatePetDto(updatePetDto);
         pet.setId(id);
         petRepository.save(pet);
     }
@@ -45,8 +43,7 @@ public class PetsControllerImpl implements PetsController {
 
     @Override
     public void add(AddPetDto addPetDto) {
-        Optional<Owner> owner = ownerRepository.findById(addPetDto.getOwner().getId());
-        Pet pet = petConverter.mapAddPetDto(addPetDto, owner.get());
+        Pet pet = petConverter.mapAddPetDto(addPetDto, addPetDto.getOwner().getId());
         petRepository.save(pet);
     }
 }

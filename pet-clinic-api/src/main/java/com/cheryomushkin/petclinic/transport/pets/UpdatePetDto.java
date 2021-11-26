@@ -20,4 +20,6 @@ public class UpdatePetDto {
     LocalDate birthDate;
     @NotNull
     PetTypeDto type;
+    @NotNull
+    AddPetOwnerDto owner;
 }

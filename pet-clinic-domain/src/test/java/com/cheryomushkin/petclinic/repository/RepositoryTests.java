@@ -33,12 +33,15 @@ public class RepositoryTests {
                 "ул. Тисовая, 4",
                 "Little Whinging",
                 "0");
-        Pet sowa = new Pet(
-                petTypeRepository.findFirstByName("Сова"), o, LocalDate.now());
-        sowa.setName("Букля");
-        o.getPets().add(sowa);
         ownerId = ownerRepository.save(o).getId();
+        o.setId(ownerId);
+        Pet sowa = new Pet(
+                petTypeRepository.findFirstByName("Сова"), ownerId, LocalDate.now());
+        sowa.setName("Букля");
         sowaId = petRepository.save(sowa).getId();
+        sowa.setId(sowaId);
+        o.getPets().add(sowa);
+        ownerRepository.save(o);
     }
 
     @Test

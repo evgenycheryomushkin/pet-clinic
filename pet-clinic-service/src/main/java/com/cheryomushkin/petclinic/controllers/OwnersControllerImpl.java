@@ -47,5 +47,4 @@ public class OwnersControllerImpl implements OwnersController {
     public void delete(Long id) {
         ownerRepository.deleteById(id);
     }
-
 }

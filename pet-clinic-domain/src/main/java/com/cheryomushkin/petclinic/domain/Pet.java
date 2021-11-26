@@ -1,11 +1,20 @@
 package com.cheryomushkin.petclinic.domain;
 
-import lombok.*;
+import lombok.AccessLevel;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 import org.hibernate.Hibernate;
 import org.springframework.lang.NonNull;
 import org.springframework.lang.Nullable;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 import java.util.Objects;
@@ -23,8 +32,7 @@ public class Pet {
     @Nullable String name;
     @ManyToOne
     @NonNull @NotNull PetType type;
-    @ManyToOne
-    @NonNull @NotNull Owner owner;
+    @NonNull @NotNull Long ownerId;
     @NonNull @NotNull LocalDate birthDate;
 
     @Override
