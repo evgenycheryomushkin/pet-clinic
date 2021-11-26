@@ -8,6 +8,8 @@ import lombok.extern.jackson.Jacksonized;
 
 import java.time.LocalDate;
 
+import static com.cheryomushkin.petclinic.transport.Constants.DATE_FORMAT;
+
 @Builder
 @Value
 @Jacksonized
@@ -15,6 +17,6 @@ public class GetOwnerPetDto {
     Long id;
     String name;
     PetTypeDto type;
-    @JsonFormat(pattern = "yyyy/MM/dd")
+    @JsonFormat(pattern = DATE_FORMAT)
     LocalDate birthDate;
 }
