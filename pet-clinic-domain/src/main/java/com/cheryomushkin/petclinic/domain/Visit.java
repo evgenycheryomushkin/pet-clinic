@@ -3,7 +3,6 @@ package com.cheryomushkin.petclinic.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
@@ -14,39 +13,39 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.Lob;
+import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
+@Entity
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Entity
-public class Pet {
+public class Visit {
     @Nullable
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
-    @Nullable String name;
-    @ManyToOne
-    @NonNull @NotNull PetType type;
-    @NonNull @NotNull Long ownerId;
-    @NonNull @NotNull LocalDate birthDate;
-    @NonNull @NotNull
-    @OneToMany(mappedBy = "petId")
-    List<Visit> visits = new ArrayList<>();
+
+    @NonNull
+    @NotNull
+    LocalDate date;
+
+    @NotNull @NotEmpty @NonNull @Lob
+    String description;
+
+    @NotNull @NonNull
+    Long petId;
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Pet pet = (Pet) o;
-        return Objects.equals(id, pet.id);
+        Visit visit = (Visit) o;
+        return Objects.equals(id, visit.id);
     }
 
     @Override

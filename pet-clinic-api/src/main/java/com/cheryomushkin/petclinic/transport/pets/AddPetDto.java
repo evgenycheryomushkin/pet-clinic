@@ -18,7 +18,7 @@ public class AddPetDto {
     @NotNull
     PetTypeDto type;
     @NotNull
-    @JsonFormat(pattern = "yyyy/MM/dd") //todo try constant or move to properties
+    @JsonFormat(pattern = "yyyy/MM/dd")
     LocalDate birthDate;
     @NotNull
     AddPetOwnerDto owner;

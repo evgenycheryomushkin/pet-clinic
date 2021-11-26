@@ -19,9 +19,11 @@ public interface PetConverter {
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "ownerId", source = "owner.id")
+    @Mapping(target = "visits", ignore = true)
     Pet mapUpdatePetDto(UpdatePetDto updatePetDto);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "name", source = "addPetDto.petName")
+    @Mapping(target = "visits", ignore = true)
     Pet mapAddPetDto(AddPetDto addPetDto, Long ownerId);
 }

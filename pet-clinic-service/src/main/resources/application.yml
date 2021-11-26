@@ -4,6 +4,7 @@ logging:
     org:
       hibernate:
         type: trace
+
 spring:
   mvc:
     log-request-details: true

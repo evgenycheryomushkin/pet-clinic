@@ -14,7 +14,7 @@ public class GetPetDto {
     Long id;
     String name;
     PetTypeDto type;
-    @JsonFormat(pattern = "yyyy/MM/dd") //todo move to config
+    @JsonFormat(pattern = "yyyy/MM/dd")
     LocalDate birthDate;
     GetPetOwnerDto owner;
 }
