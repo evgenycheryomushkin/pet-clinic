@@ -1,6 +1,6 @@
 package com.cheryomushkin.petclinic;
 
-import com.cheryomushkin.petclinic.converters.PetConverter;
+import com.cheryomushkin.petclinic.converters.PetsConverter;
 import com.cheryomushkin.petclinic.domain.Pet;
 import com.cheryomushkin.petclinic.transport.pets.AddPetOwnerDto;
 import com.cheryomushkin.petclinic.transport.pets.PetTypeDto;
@@ -18,7 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 public class ConverterTests {
     @Autowired
-    PetConverter petConverter;
+    PetsConverter petsConverter;
     @Test
     public void testUpdatePetDto() {
         UpdatePetDto updatePetDto = UpdatePetDto.builder()
@@ -27,7 +27,7 @@ public class ConverterTests {
                 .owner(AddPetOwnerDto.builder().id(1L).build())
                 .type(PetTypeDto.builder().id(3L).name("Owl").build())
                 .build();
-        Pet pet = petConverter.mapUpdatePetDto(updatePetDto);
+        Pet pet = petsConverter.mapUpdatePetDto(updatePetDto);
         assertEquals(updatePetDto.getName(), pet.getName());
         assertEquals(updatePetDto.getBirthDate(), pet.getBirthDate());
         assertEquals(updatePetDto.getOwner().getId(), pet.getOwnerId());

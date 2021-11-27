@@ -1,7 +1,6 @@
 package com.cheryomushkin.petclinic.controllers;
 
-import com.cheryomushkin.petclinic.controller.PetsController;
-import com.cheryomushkin.petclinic.converters.PetConverter;
+import com.cheryomushkin.petclinic.converters.PetsConverter;
 import com.cheryomushkin.petclinic.domain.Owner;
 import com.cheryomushkin.petclinic.domain.Pet;
 import com.cheryomushkin.petclinic.repository.OwnerRepository;
@@ -18,7 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class PetsControllerImpl implements PetsController {
     final PetRepository petRepository;
-    final PetConverter petConverter;
+    final PetsConverter petsConverter;
     final OwnerRepository ownerRepository;
 
     @Override
@@ -26,12 +25,12 @@ public class PetsControllerImpl implements PetsController {
         Optional<Pet> pet = petRepository.findById(id);
         if (pet.isEmpty()) return null;
         Optional<Owner> owner = ownerRepository.findById(pet.get().getOwnerId());
-        return petConverter.mapPet(pet.get(), owner.get());
+        return petsConverter.mapPet(pet.get(), owner.get());
     }
 
     @Override
     public void update(Long id, UpdatePetDto updatePetDto) {
-        Pet pet = petConverter.mapUpdatePetDto(updatePetDto);
+        Pet pet = petsConverter.mapUpdatePetDto(updatePetDto);
         pet.setId(id);
         petRepository.save(pet);
     }
@@ -43,7 +42,7 @@ public class PetsControllerImpl implements PetsController {
 
     @Override
     public void add(AddPetDto addPetDto) {
-        Pet pet = petConverter.mapAddPetDto(addPetDto, addPetDto.getOwner().getId());
+        Pet pet = petsConverter.mapAddPetDto(addPetDto, addPetDto.getOwner().getId());
         petRepository.save(pet);
     }
 }

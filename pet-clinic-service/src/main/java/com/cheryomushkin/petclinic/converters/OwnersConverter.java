@@ -7,7 +7,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper
-public interface OwnerConverter {
+public interface OwnersConverter {
     GetOwnerDto mapOwnerGet(Owner owner);
     Iterable<GetOwnerDto> mapOwnersGet(Iterable<Owner> owners);
     @Mapping(target = "id", ignore = true)

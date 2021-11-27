@@ -11,7 +11,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
 @Mapper
-public interface PetConverter {
+public interface PetsConverter {
     Iterable<PetTypeDto> mapPetTypes(Iterable<PetType> petTypes);
 
     @Mapping(target = "id", source = "pet.id")

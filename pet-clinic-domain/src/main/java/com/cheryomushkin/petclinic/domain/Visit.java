@@ -3,6 +3,7 @@ package com.cheryomushkin.petclinic.domain;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.Hibernate;
@@ -24,6 +25,7 @@ import java.util.Objects;
 @Setter
 @ToString
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
+@RequiredArgsConstructor
 public class Visit {
     @Nullable
     @Id

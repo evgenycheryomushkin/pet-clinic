@@ -1,4 +1,4 @@
-package com.cheryomushkin.petclinic.controller;
+package com.cheryomushkin.petclinic.controllers;
 
 import com.cheryomushkin.petclinic.transport.pets.AddPetDto;
 import com.cheryomushkin.petclinic.transport.pets.GetPetDto;
@@ -19,10 +19,10 @@ import javax.validation.Valid;
 public interface PetsController {
     @GetMapping("/{id}")
     GetPetDto getById(@PathVariable Long id);
+    @PostMapping("")
+    void add(@RequestBody @Valid AddPetDto addPetDto);
     @PutMapping("/{id}")
     void update(@PathVariable Long id, @RequestBody @Valid UpdatePetDto updatePetDto);
     @DeleteMapping("/{id}")
     void delete(@PathVariable Long id);
-    @PostMapping("")
-    void add(@RequestBody @Valid AddPetDto addPetDto);
 }

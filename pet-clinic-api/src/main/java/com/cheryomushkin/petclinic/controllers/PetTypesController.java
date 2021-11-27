@@ -1,4 +1,4 @@
-package com.cheryomushkin.petclinic.controller;
+package com.cheryomushkin.petclinic.controllers;
 
 import com.cheryomushkin.petclinic.transport.pets.PetTypeDto;
 import org.springframework.validation.annotation.Validated;

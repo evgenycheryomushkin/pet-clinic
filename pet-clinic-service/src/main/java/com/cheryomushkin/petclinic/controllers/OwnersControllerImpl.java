@@ -1,7 +1,6 @@
 package com.cheryomushkin.petclinic.controllers;
 
-import com.cheryomushkin.petclinic.controller.OwnersController;
-import com.cheryomushkin.petclinic.converters.OwnerConverter;
+import com.cheryomushkin.petclinic.converters.OwnersConverter;
 import com.cheryomushkin.petclinic.domain.Owner;
 import com.cheryomushkin.petclinic.repository.OwnerRepository;
 import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
@@ -14,31 +13,31 @@ import java.util.Optional;
 @RestController
 @RequiredArgsConstructor
 public class OwnersControllerImpl implements OwnersController {
-    private final OwnerConverter ownerConverter;
+    private final OwnersConverter ownersConverter;
     private final OwnerRepository ownerRepository;
 
     @Override
     public Iterable<GetOwnerDto> list() {
         Iterable<Owner> owners = ownerRepository.findAll();
-        return ownerConverter.mapOwnersGet(owners);
+        return ownersConverter.mapOwnersGet(owners);
     }
 
     @Override
     public GetOwnerDto getById(Long id) {
         Optional<Owner> owner = ownerRepository.findById(id);
         if (owner.isEmpty()) return null;
-        return ownerConverter.mapOwnerGet(owner.get());
+        return ownersConverter.mapOwnerGet(owner.get());
     }
 
     @Override
     public Long add(AddOwnerDto ownerDto) {
-        Owner owner = ownerConverter.mapAddOwnerDto(ownerDto);
+        Owner owner = ownersConverter.mapAddOwnerDto(ownerDto);
         return ownerRepository.save(owner).getId();
     }
 
     @Override
     public void update(Long id, AddOwnerDto addOwnerDto) {
-        Owner owner = ownerConverter.mapAddOwnerDto(addOwnerDto);
+        Owner owner = ownersConverter.mapAddOwnerDto(addOwnerDto);
         owner.setId(id);
         ownerRepository.save(owner);
     }

@@ -1,4 +1,4 @@
-package com.cheryomushkin.petclinic.controller;
+package com.cheryomushkin.petclinic.controllers;
 
 import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
 import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
