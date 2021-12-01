@@ -36,3 +36,6 @@ values ('Букля', 3, 1, date '1989-01-01'),
 delete from vet;
 insert into vet (first_name, last_name) values ( 'Рубеус', 'Хагрид' );
 insert into vet (first_name, last_name) values ( 'Поппи', 'Помфри' );
+
+delete from visit;
+insert into visit (date, description, pet_id) values ( date '2021-01-01', 'Сове оторвали хвост', 1 );

@@ -9,6 +9,7 @@ import com.cheryomushkin.petclinic.transport.pets.AddPetDto;
 import com.cheryomushkin.petclinic.transport.pets.GetPetDto;
 import com.cheryomushkin.petclinic.transport.pets.UpdatePetDto;
 import lombok.RequiredArgsConstructor;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -21,17 +22,16 @@ public class PetsControllerImpl implements PetsController {
     final OwnerRepository ownerRepository;
 
     @Override
-    public GetPetDto getById(Long id) {
+    public @Nullable GetPetDto getById(Long id) {
         Optional<Pet> pet = petRepository.findById(id);
         if (pet.isEmpty()) return null;
-        Optional<Owner> owner = ownerRepository.findById(pet.get().getOwnerId());
-        return petsConverter.mapPet(pet.get(), owner.get());
+        Owner owner = ownerRepository.findById(pet.get().getOwnerId()).orElseThrow();
+        return petsConverter.petAndOwnerToGetPetDto(pet.get(), owner);
     }
 
     @Override
     public void update(Long id, UpdatePetDto updatePetDto) {
-        Pet pet = petsConverter.mapUpdatePetDto(updatePetDto);
-        pet.setId(id);
+        Pet pet = petsConverter.updatePetDtoAndIdToPet(updatePetDto, id);
         petRepository.save(pet);
     }
 
@@ -42,7 +42,7 @@ public class PetsControllerImpl implements PetsController {
 
     @Override
     public void add(AddPetDto addPetDto) {
-        Pet pet = petsConverter.mapAddPetDto(addPetDto, addPetDto.getOwner().getId());
+        Pet pet = petsConverter.addPetDtoAndOwnerIdToPet(addPetDto, addPetDto.getOwner().getId());
         petRepository.save(pet);
     }
 }

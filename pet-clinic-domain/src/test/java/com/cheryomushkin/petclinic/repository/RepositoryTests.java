@@ -15,15 +15,19 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
 public class RepositoryTests {
-    @Autowired
-    OwnerRepository ownerRepository;
-    @Autowired
-    PetRepository petRepository;
-    @Autowired
-    PetTypeRepository petTypeRepository;
+    final OwnerRepository ownerRepository;
+    final PetRepository petRepository;
+    final PetTypeRepository petTypeRepository;
 
-    private Long ownerId;
-    private Long sowaId;
+    private Long ownerId = 0L;
+    private Long sowaId = 0L;
+
+    @Autowired
+    public RepositoryTests(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
+        this.ownerRepository = ownerRepository;
+        this.petRepository = petRepository;
+        this.petTypeRepository = petTypeRepository;
+    }
 
     @BeforeEach
     public void beforeEach() {
@@ -33,13 +37,15 @@ public class RepositoryTests {
                 "ул. Тисовая, 4",
                 "Little Whinging",
                 "0");
-        ownerId = ownerRepository.save(o).getId();
-        o.setId(ownerId);
+        o = ownerRepository.save(o);
+        ownerId = o.ensureId();
         Pet sowa = new Pet(
-                petTypeRepository.findFirstByName("Сова"), ownerId, LocalDate.now());
-        sowa.setName("Букля");
-        sowaId = petRepository.save(sowa).getId();
-        sowa.setId(sowaId);
+                "Букля",
+                petTypeRepository.findFirstByName("Сова"),
+                ownerId,
+                LocalDate.now());
+        sowa = petRepository.save(sowa);
+        sowaId = sowa.ensureId();
         o.getPets().add(sowa);
         ownerRepository.save(o);
     }

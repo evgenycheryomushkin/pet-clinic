@@ -13,9 +13,10 @@ public class VisitsControllerImpl implements VisitsController {
     private final VisitRepository visitRepository;
     private final VisitsConverter visitsConverter;
 
+
     @Override
     public void create(AddVisitDto addVisitDto) {
-        Visit visit = visitsConverter.mapAddVisitDto(addVisitDto);
+        Visit visit = visitsConverter.addVisitDtoToVisit(addVisitDto);
         visitRepository.save(visit);
     }
 }

@@ -1,35 +1,30 @@
 package com.cheryomushkin.petclinic.domain;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import java.util.Objects;
 
 @Entity
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PetType {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class PetType extends Identifier {
 
-    @NonNull @NotNull String name;
+    @SuppressWarnings("initialization.fields.uninitialized")
+    protected PetType() {}
+
+    public PetType(String name) {
+        this.name = name;
+    }
+
+    @NotNull String name;
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         PetType petType = (PetType) o;
