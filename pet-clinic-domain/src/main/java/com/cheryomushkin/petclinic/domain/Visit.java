@@ -1,19 +1,11 @@
 package com.cheryomushkin.petclinic.domain;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hibernate.Hibernate;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Lob;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -23,27 +15,28 @@ import java.util.Objects;
 @Entity
 @Getter
 @Setter
-@ToString
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
-@RequiredArgsConstructor
-public class Visit {
-    @Nullable
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+public class Visit extends Identifier {
 
-    @NonNull
+    @SuppressWarnings("initialization.fields.uninitialized")
+    protected Visit() {}
+
+    public Visit(LocalDate date, String description, Long petId) {
+        this.date = date;
+        this.description = description;
+        this.petId = petId;
+    }
+
     @NotNull
     LocalDate date;
 
-    @NotNull @NotEmpty @NonNull @Lob
+    @Lob @NotNull @NotEmpty
     String description;
 
-    @NotNull @NonNull
+    @NotNull
     Long petId;
 
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Visit visit = (Visit) o;

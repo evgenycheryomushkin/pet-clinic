@@ -3,6 +3,7 @@ package com.cheryomushkin.petclinic.controllers;
 import com.cheryomushkin.petclinic.transport.pets.AddPetDto;
 import com.cheryomushkin.petclinic.transport.pets.GetPetDto;
 import com.cheryomushkin.petclinic.transport.pets.UpdatePetDto;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,7 +19,7 @@ import javax.validation.Valid;
 @Validated
 public interface PetsController {
     @GetMapping("/{id}")
-    GetPetDto getById(@PathVariable Long id);
+    @Nullable GetPetDto getById(@PathVariable Long id);
     @PostMapping("")
     void add(@RequestBody @Valid AddPetDto addPetDto);
     @PutMapping("/{id}")

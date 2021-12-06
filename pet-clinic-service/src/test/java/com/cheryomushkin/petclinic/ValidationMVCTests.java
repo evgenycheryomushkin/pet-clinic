@@ -16,19 +16,20 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class ValidationMVCTests {
-    @Autowired
-    MockMvc mockMvc;
+    final MockMvc mockMvc;
+    final ObjectMapper objectMapper;
 
     @Autowired
-    ObjectMapper objectMapper;
+    public ValidationMVCTests(MockMvc mockMvc, ObjectMapper objectMapper) {
+        this.mockMvc = mockMvc;
+        this.objectMapper = objectMapper;
+    }
 
     @Test
     public void testValidation() throws Exception {
-        AddOwnerDto ownerDto = AddOwnerDto.builder()
-                        .firstName("Гарри").lastName("Поттер")
-                        .address("ул. Тисовая 4").city("Little Winging")
-                        .telephone("")//error here
-                                .build();
+        AddOwnerDto ownerDto = new AddOwnerDto(
+                        "Гарри", "Поттер",
+                        "ул. Тисовая 4", "Little Winging", "");
         mockMvc.perform(post("/petclinic/api/owners/")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(ownerDto))

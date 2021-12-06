@@ -1,16 +1,16 @@
 package com.cheryomushkin.petclinic.converters;
 
 import com.cheryomushkin.petclinic.domain.Owner;
+import com.cheryomushkin.petclinic.domain.Pet;
 import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
 import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
-import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
+import com.cheryomushkin.petclinic.transport.owners.GetOwnerPetDto;
 
-@Mapper
 public interface OwnersConverter {
-    GetOwnerDto mapOwnerGet(Owner owner);
-    Iterable<GetOwnerDto> mapOwnersGet(Iterable<Owner> owners);
-    @Mapping(target = "id", ignore = true)
-    @Mapping(target = "pets", ignore = true)
-    Owner mapAddOwnerDto(AddOwnerDto addOwnerDto);
+    GetOwnerPetDto petToGetOwnerPetDto(Pet pet);
+
+    GetOwnerDto ownerToGetOwnerDto(Owner owner);
+    Iterable<GetOwnerDto> ownersToGetOwnerDtos(Iterable<Owner> owners);
+    Owner addOwnerDtoToOwner(AddOwnerDto addOwnerDto);
+    Owner addOwnerDtoIdToOwner(AddOwnerDto addOwnerDto, Long id);
 }

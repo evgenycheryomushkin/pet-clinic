@@ -6,6 +6,7 @@ import com.cheryomushkin.petclinic.repository.OwnerRepository;
 import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
 import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
 import lombok.RequiredArgsConstructor;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
@@ -19,26 +20,25 @@ public class OwnersControllerImpl implements OwnersController {
     @Override
     public Iterable<GetOwnerDto> list() {
         Iterable<Owner> owners = ownerRepository.findAll();
-        return ownersConverter.mapOwnersGet(owners);
+        return ownersConverter.ownersToGetOwnerDtos(owners);
     }
 
     @Override
-    public GetOwnerDto getById(Long id) {
+    public @Nullable GetOwnerDto getById(Long id) {
         Optional<Owner> owner = ownerRepository.findById(id);
         if (owner.isEmpty()) return null;
-        return ownersConverter.mapOwnerGet(owner.get());
+        return ownersConverter.ownerToGetOwnerDto(owner.get());
     }
 
     @Override
     public Long add(AddOwnerDto ownerDto) {
-        Owner owner = ownersConverter.mapAddOwnerDto(ownerDto);
-        return ownerRepository.save(owner).getId();
+        Owner owner = ownersConverter.addOwnerDtoToOwner(ownerDto);
+        return ownerRepository.save(owner).ensureId();
     }
 
     @Override
     public void update(Long id, AddOwnerDto addOwnerDto) {
-        Owner owner = ownersConverter.mapAddOwnerDto(addOwnerDto);
-        owner.setId(id);
+        Owner owner = ownersConverter.addOwnerDtoIdToOwner(addOwnerDto, id);
         ownerRepository.save(owner);
     }
 

@@ -2,6 +2,7 @@ package com.cheryomushkin.petclinic.controllers;
 
 import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
 import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,7 +20,7 @@ public interface OwnersController {
     @GetMapping("")
     Iterable<GetOwnerDto> list();
     @GetMapping("/{id}")
-    GetOwnerDto getById(@PathVariable Long id);
+    @Nullable GetOwnerDto getById(@PathVariable Long id);
     @PostMapping("")
     Long add(@RequestBody @Valid AddOwnerDto ownerDto);
     @PutMapping("/{id}")

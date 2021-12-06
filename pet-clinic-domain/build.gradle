@@ -3,10 +3,13 @@ import org.springframework.boot.gradle.plugin.SpringBootPlugin
 plugins {
     alias(libs.plugins.spring.boot) apply false
     alias(libs.plugins.spring.dm)
+    id 'java'
+    id 'idea'
+    id 'io.freefair.lombok' version '6.3.0'
+    id 'org.checkerframework' version '0.6.3'
     id 'java-conventions'
     id 'database-conventions'
 }
-
 
 dependencyManagement {
     imports {

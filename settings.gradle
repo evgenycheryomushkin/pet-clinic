@@ -8,6 +8,8 @@ dependencyResolutionManagement {
             version('mapstruct', '1.4.2.Final')
 
             alias('lombok').to('org.projectlombok', 'lombok').withoutVersion()
+            alias('lombok').toPluginId('io.freefair.lombok').version('6.3.0')
+            alias('checker').toPluginId('org.checkerframework').version('0.6.3')
             alias('mapstruct').to('org.mapstruct', 'mapstruct').versionRef('mapstruct')
             alias('mapstruct-processor').to('org.mapstruct', 'mapstruct-processor').versionRef('mapstruct')
             alias('lombok-mapstruct-binding').to('org.projectlombok', 'lombok-mapstruct-binding').version('0.2.0')
@@ -15,7 +17,11 @@ dependencyResolutionManagement {
             alias('flyway-core').to('org.flywaydb', 'flyway-core').withoutVersion()
             alias('h2').to('com.h2database', 'h2').withoutVersion()
 
+            alias('checker').toPluginId('org.checkerframework').version('0.6.3')
+            alias('checker').to('org.checkerframework', 'checker').version('3.19.0')
+
             alias('jsr305').to('com.google.code.findbugs', 'jsr305').version('3.0.2')
+
 
             // spring
             alias('spring-boot').toPluginId('org.springframework.boot').version('2.5.5')

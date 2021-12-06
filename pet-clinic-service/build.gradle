@@ -1,6 +1,10 @@
 plugins {
     alias(libs.plugins.spring.boot)
     alias(libs.plugins.spring.dm)
+    id 'java'
+    id 'idea'
+    alias(libs.plugins.lombok)
+    alias(libs.plugins.checker)
     id 'java-conventions'
     id 'database-conventions'
 }
@@ -9,33 +13,19 @@ dependencies {
     implementation project(':pet-clinic-api')
     implementation project(':pet-clinic-domain')
 
-    compileOnly libs.lombok
-    compileOnly libs.mapstruct
-    annotationProcessor libs.lombok
-    annotationProcessor libs.lombok.mapstruct.binding
-    annotationProcessor libs.mapstruct.processor
-
     developmentOnly libs.spring.boot.devtools
 
     implementation libs.jsr305
+
     implementation libs.spring.boot.starter.validation
     implementation libs.spring.boot.starter.web
     implementation libs.spring.boot.starter.actuator
 
-    testCompileOnly libs.lombok
-    testAnnotationProcessor libs.lombok
     testImplementation libs.spring.boot.starter.test
 }
 
 jar {
     enabled = false
-}
-
-compileJava {
-    options.compilerArgs += [
-            '-Amapstruct.defaultComponentModel=spring',
-            '-Amapstruct.unmappedTargetPolicy=ERROR'
-    ]
 }
 
 tasks.withType(JavaCompile) {

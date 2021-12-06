@@ -1,9 +1,9 @@
 package com.cheryomushkin.petclinic.controllers;
 
-import com.cheryomushkin.petclinic.converters.PetsConverter;
+import com.cheryomushkin.petclinic.converters.Converter;
 import com.cheryomushkin.petclinic.domain.PetType;
 import com.cheryomushkin.petclinic.repository.PetTypeRepository;
-import com.cheryomushkin.petclinic.transport.pets.PetTypeDto;
+import com.cheryomushkin.petclinic.transport.PetTypeDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class PetTypesControllerImpl implements PetTypesController {
     final PetTypeRepository petTypeRepository;
-    final PetsConverter petsConverter;
+    final Converter converter;
 
     @Override
     public Iterable<PetTypeDto> list() {
         Iterable<PetType> petTypes = petTypeRepository.findAll();
-        return petsConverter.mapPetTypes(petTypes);
+        return converter.petTypesToPetTypeDtos(petTypes);
     }
 }

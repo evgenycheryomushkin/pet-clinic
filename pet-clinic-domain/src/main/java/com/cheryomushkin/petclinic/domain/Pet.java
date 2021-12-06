@@ -1,19 +1,11 @@
 package com.cheryomushkin.petclinic.domain;
 
-import lombok.AccessLevel;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hibernate.Hibernate;
-import org.springframework.lang.NonNull;
-import org.springframework.lang.Nullable;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
@@ -24,25 +16,29 @@ import java.util.Objects;
 
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
-@NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
-public class Pet {
-    @Nullable
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
-    @Nullable String name;
+public class Pet extends Identifier{
+    @NotNull String name;
     @ManyToOne
-    @NonNull @NotNull PetType type;
-    @NonNull @NotNull Long ownerId;
-    @NonNull @NotNull LocalDate birthDate;
-    @NonNull @NotNull
+    @NotNull PetType type;
+    @NotNull Long ownerId;
+    @NotNull LocalDate birthDate;
     @OneToMany(mappedBy = "petId")
+    @NotNull
     List<Visit> visits = new ArrayList<>();
 
+    @SuppressWarnings("initialization.fields.uninitialized")
+    protected Pet() {}
+
+    public Pet(String name, PetType type, Long ownerId, LocalDate birthDate) {
+        this.name = name;
+        this.type = type;
+        this.ownerId = ownerId;
+        this.birthDate = birthDate;
+    }
+
     @Override
-    public boolean equals(Object o) {
+    public boolean equals(@Nullable Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
         Pet pet = (Pet) o;
