@@ -5,21 +5,25 @@ import com.cheryomushkin.petclinic.domain.Owner;
 import com.cheryomushkin.petclinic.domain.Pet;
 import com.cheryomushkin.petclinic.repository.OwnerRepository;
 import com.cheryomushkin.petclinic.repository.PetRepository;
+import com.cheryomushkin.petclinic.repository.VisitRepository;
 import com.cheryomushkin.petclinic.transport.pets.AddPetDto;
 import com.cheryomushkin.petclinic.transport.pets.GetPetDto;
 import com.cheryomushkin.petclinic.transport.pets.UpdatePetDto;
 import lombok.RequiredArgsConstructor;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@Transactional
 public class PetsControllerImpl implements PetsController {
     final PetRepository petRepository;
     final PetsConverter petsConverter;
     final OwnerRepository ownerRepository;
+    final VisitRepository visitRepository;
 
     @Override
     public @Nullable GetPetDto getById(Long id) {
@@ -37,7 +41,9 @@ public class PetsControllerImpl implements PetsController {
 
     @Override
     public void delete(Long id) {
+        visitRepository.deleteAllByPetId(id);
         petRepository.deleteById(id);
+
     }
 
     @Override

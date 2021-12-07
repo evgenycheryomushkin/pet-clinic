@@ -5,10 +5,12 @@ import com.cheryomushkin.petclinic.domain.Visit;
 import com.cheryomushkin.petclinic.repository.VisitRepository;
 import com.cheryomushkin.petclinic.transport.visits.AddVisitDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@Transactional
 public class VisitsControllerImpl implements VisitsController {
     private final VisitRepository visitRepository;
     private final VisitsConverter visitsConverter;

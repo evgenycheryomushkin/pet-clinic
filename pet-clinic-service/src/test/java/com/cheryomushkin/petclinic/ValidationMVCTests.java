@@ -36,6 +36,5 @@ public class ValidationMVCTests {
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
                 .andExpect(status().is4xxClientError());
-
     }
 }
