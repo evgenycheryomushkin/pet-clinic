@@ -35,7 +35,7 @@ public class PetsControllerImpl implements PetsController {
 
     @Override
     public void update(Long id, UpdatePetDto updatePetDto) {
-        Pet pet = petsConverter.updatePetDtoAndIdToPet(updatePetDto, id);
+        Pet pet = petsConverter.updatePetDtoAndIdToPet(id, updatePetDto);
         petRepository.save(pet);
     }
 

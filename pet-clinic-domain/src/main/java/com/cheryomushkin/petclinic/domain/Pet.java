@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -25,16 +24,17 @@ public class Pet extends Identifier{
     @NotNull LocalDate birthDate;
     @OneToMany(mappedBy = "petId")
     @NotNull
-    List<Visit> visits = new ArrayList<>();
+    List<Visit> visits;
 
     @SuppressWarnings("initialization.fields.uninitialized")
     protected Pet() {}
 
-    public Pet(String name, PetType type, Long ownerId, LocalDate birthDate) {
+    public Pet(String name, PetType type, Long ownerId, LocalDate birthDate, List<Visit> visits) {
         this.name = name;
         this.type = type;
         this.ownerId = ownerId;
         this.birthDate = birthDate;
+        this.visits = visits;
     }
 
     @Override

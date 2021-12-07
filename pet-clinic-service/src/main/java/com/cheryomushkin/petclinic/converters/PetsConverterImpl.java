@@ -9,9 +9,12 @@ import com.cheryomushkin.petclinic.transport.pets.UpdatePetDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 @RequiredArgsConstructor
 public class PetsConverterImpl implements PetsConverter {
+    final OwnersConverter ownersConverter;
     final Converter converter;
 
     @Override
@@ -25,14 +28,14 @@ public class PetsConverterImpl implements PetsConverter {
         GetPetOwnerDto ownerDto = ownerToGetPetOwnerDto(owner);
         return new GetPetDto(pet.ensureId(), pet.getName(),
                 converter.petTypeToPetTypeDto(pet.getType()),
-                pet.getBirthDate(), ownerDto);
+                pet.getBirthDate(), ownerDto, ownersConverter.visitsToVisitDtos(pet.getVisits()));
     }
 
     @Override
-    public Pet updatePetDtoAndIdToPet(UpdatePetDto updatePetDto, Long id) {
+    public Pet updatePetDtoAndIdToPet(Long id, UpdatePetDto updatePetDto) {
         Pet pet = new Pet(updatePetDto.getName(),
                 converter.petTypeDtoToPetType(updatePetDto.getType()),
-        updatePetDto.getOwner().getId(), updatePetDto.getBirthDate());
+        updatePetDto.getOwner().getId(), updatePetDto.getBirthDate(), new ArrayList<>());
         pet.setId(id);
         return pet;
     }
@@ -41,6 +44,6 @@ public class PetsConverterImpl implements PetsConverter {
     public Pet addPetDtoAndOwnerIdToPet(AddPetDto addPetDto, Long ownerId) {
         return new Pet(addPetDto.getPetName(),
                 converter.petTypeDtoToPetType(addPetDto.getType()), ownerId,
-                addPetDto.getBirthDate());
+                addPetDto.getBirthDate(), new ArrayList<>());
     }
 }

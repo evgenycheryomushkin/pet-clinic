@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Value;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import static com.cheryomushkin.petclinic.transport.Constants.DATE_FORMAT;
 
@@ -15,4 +16,5 @@ public class GetOwnerPetDto {
     PetTypeDto type;
     @JsonFormat(pattern = DATE_FORMAT)
     LocalDate birthDate;
+    List<VisitDto> visits;
 }

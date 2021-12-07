@@ -9,7 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -30,17 +29,18 @@ public class Owner extends Identifier {
 
     @OneToMany(mappedBy = "ownerId")
     @NotNull
-    List<Pet> pets = new ArrayList<>();
+    List<Pet> pets;
 
     @SuppressWarnings("initialization.fields.uninitialized")
     protected Owner() {}
 
-    public Owner(String firstName, String lastName, String address, String city, String telephone) {
+    public Owner(String firstName, String lastName, String address, String city, String telephone, List<Pet> pets) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
         this.city = city;
         this.telephone = telephone;
+        this.pets = pets;
     }
 
     @Override

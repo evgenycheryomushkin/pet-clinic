@@ -38,4 +38,4 @@ insert into vet (first_name, last_name) values ( 'Рубеус', 'Хагрид' 
 insert into vet (first_name, last_name) values ( 'Поппи', 'Помфри' );
 
 delete from visit;
-insert into visit (date, description, pet_id) values ( date '2021-01-01', 'Сове оторвали хвост', 1 );
+insert into visit (date, description, pet_id) values ( date '2021-01-01', 'Сова сломала лапу', 1 );

@@ -10,7 +10,8 @@ import java.time.LocalDate;
 import static com.cheryomushkin.petclinic.transport.Constants.DATE_FORMAT;
 
 @Value
-public class AddVisitDto {
+public class UpdateVisitDto {
+    @NotNull Long id;
     @JsonFormat(pattern = DATE_FORMAT)
     @NotNull LocalDate date;
     @NotNull @NotEmpty String description;

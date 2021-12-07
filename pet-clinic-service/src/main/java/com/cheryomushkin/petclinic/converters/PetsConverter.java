@@ -9,8 +9,7 @@ import com.cheryomushkin.petclinic.transport.pets.UpdatePetDto;
 
 public interface PetsConverter {
     GetPetOwnerDto ownerToGetPetOwnerDto(Owner owner);
-
     GetPetDto petAndOwnerToGetPetDto(Pet pet, Owner owner);
-    Pet updatePetDtoAndIdToPet(UpdatePetDto updatePetDto, Long id);
+    Pet updatePetDtoAndIdToPet(Long id, UpdatePetDto updatePetDto);
     Pet addPetDtoAndOwnerIdToPet(AddPetDto addPetDto, Long ownerId);
 }

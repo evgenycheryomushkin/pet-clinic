@@ -29,7 +29,7 @@ public class ConverterTests {
         UpdatePetDto updatePetDto = new UpdatePetDto(
                 "Pet", LocalDate.now(),
                 new PetTypeDto(1L, "OWL"), new AddPetOwnerDto(1L));
-        Pet pet = petsConverter.updatePetDtoAndIdToPet(updatePetDto, 10L);
+        Pet pet = petsConverter.updatePetDtoAndIdToPet(10L, updatePetDto);
         assertEquals(10L, pet.ensureId());
         assertEquals(updatePetDto.getName(), pet.getName());
         assertEquals(updatePetDto.getBirthDate(), pet.getBirthDate());

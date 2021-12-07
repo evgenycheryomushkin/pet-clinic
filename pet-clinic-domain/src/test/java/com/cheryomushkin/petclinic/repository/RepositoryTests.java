@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,14 +37,16 @@ public class RepositoryTests {
                 "Поттер",
                 "ул. Тисовая, 4",
                 "Little Whinging",
-                "0");
+                "0",
+                new ArrayList<>());
         o = ownerRepository.save(o);
         ownerId = o.ensureId();
         Pet sowa = new Pet(
                 "Букля",
                 petTypeRepository.findFirstByName("Сова"),
                 ownerId,
-                LocalDate.now());
+                LocalDate.now(),
+                new ArrayList<>());
         sowa = petRepository.save(sowa);
         sowaId = sowa.ensureId();
         o.getPets().add(sowa);

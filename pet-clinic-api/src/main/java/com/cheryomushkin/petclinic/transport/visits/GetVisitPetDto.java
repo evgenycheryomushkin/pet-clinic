@@ -8,6 +8,7 @@ import java.time.LocalDate;
 
 @Value
 public class GetVisitPetDto {
+    Long id;
     String name;
     LocalDate birthDate;
     PetTypeDto type;

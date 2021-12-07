@@ -10,6 +10,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -40,12 +41,18 @@ public class OwnersControllerImpl implements OwnersController {
 
     @Override
     public void update(Long id, AddOwnerDto addOwnerDto) {
-        Owner owner = ownersConverter.addOwnerDtoIdToOwner(addOwnerDto, id);
+        Owner owner = ownersConverter.addOwnerDtoIdToOwner(id, addOwnerDto);
         ownerRepository.save(owner);
     }
 
     @Override
     public void delete(Long id) {
         ownerRepository.deleteById(id);
+    }
+
+    @Override
+    public Iterable<GetOwnerDto> findByLastnameStart(String start) {
+        List<Owner> owners = ownerRepository.findAllByLastNameStartsWith(start);
+        return ownersConverter.ownersToGetOwnerDtos(owners);
     }
 }

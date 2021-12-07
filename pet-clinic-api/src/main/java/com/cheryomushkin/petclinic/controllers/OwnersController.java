@@ -27,4 +27,6 @@ public interface OwnersController {
     void update(@PathVariable Long id, @RequestBody @Valid AddOwnerDto addOwnerDto);
     @DeleteMapping("/{id}")
     void delete(@PathVariable Long id);
+    @GetMapping("/*/lastname/{start}")
+    Iterable<GetOwnerDto> findByLastnameStart(@PathVariable String start);
 }

@@ -26,14 +26,10 @@ public class Visit extends Identifier {
         this.petId = petId;
     }
 
-    @NotNull
-    LocalDate date;
-
-    @Lob @NotNull @NotEmpty
-    String description;
-
-    @NotNull
-    Long petId;
+    @NotNull LocalDate date;
+    @Lob
+    @NotNull @NotEmpty String description;
+    @NotNull Long petId;
 
     @Override
     public boolean equals(@Nullable Object o) {
