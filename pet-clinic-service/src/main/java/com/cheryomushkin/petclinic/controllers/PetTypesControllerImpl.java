@@ -5,10 +5,12 @@ import com.cheryomushkin.petclinic.domain.PetType;
 import com.cheryomushkin.petclinic.repository.PetTypeRepository;
 import com.cheryomushkin.petclinic.transport.PetTypeDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
+@Transactional
 public class PetTypesControllerImpl implements PetTypesController {
     final PetTypeRepository petTypeRepository;
     final Converter converter;

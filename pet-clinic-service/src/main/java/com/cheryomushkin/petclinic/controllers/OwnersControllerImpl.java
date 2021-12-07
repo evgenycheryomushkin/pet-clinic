@@ -7,12 +7,14 @@ import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
 import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
 import lombok.RequiredArgsConstructor;
 import org.checkerframework.checker.nullness.qual.Nullable;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.Optional;
 
 @RestController
 @RequiredArgsConstructor
+@Transactional
 public class OwnersControllerImpl implements OwnersController {
     private final OwnersConverter ownersConverter;
     private final OwnerRepository ownerRepository;
