@@ -6,35 +6,28 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
-import java.util.List;
 import java.util.Objects;
 
 @Getter
 @Setter
 @Entity
-public class Vet extends Identifier {
-    @NotNull @NotEmpty String firstName;
-    @NotNull @NotEmpty String lastName;
-    @ManyToMany
-    @NotNull List<Specialty> specialties;
+public class Specialty extends Identifier {
+    @NotNull @NotEmpty String name;
+
+    public Specialty(String name) {
+        this.name = name;
+    }
 
     @SuppressWarnings("initialization.fields.uninitialized")
-    protected Vet() {}
-
-    public Vet(String firstName, String lastName, List<Specialty> specialties) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.specialties = specialties;
-    }
+    protected Specialty() {}
 
     @Override
     public boolean equals(@Nullable Object o) {
         if (this == o) return true;
         if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Vet vet = (Vet) o;
+        Specialty vet = (Specialty) o;
         return Objects.equals(id, vet.id);
     }
 

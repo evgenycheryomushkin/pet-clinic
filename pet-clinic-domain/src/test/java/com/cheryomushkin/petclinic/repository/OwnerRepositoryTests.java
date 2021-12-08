@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
-public class RepositoryTests {
+public class OwnerRepositoryTests {
     final OwnerRepository ownerRepository;
     final PetRepository petRepository;
     final PetTypeRepository petTypeRepository;
@@ -24,7 +24,7 @@ public class RepositoryTests {
     private Long sowaId = 0L;
 
     @Autowired
-    public RepositoryTests(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
+    public OwnerRepositoryTests(OwnerRepository ownerRepository, PetRepository petRepository, PetTypeRepository petTypeRepository) {
         this.ownerRepository = ownerRepository;
         this.petRepository = petRepository;
         this.petTypeRepository = petTypeRepository;
