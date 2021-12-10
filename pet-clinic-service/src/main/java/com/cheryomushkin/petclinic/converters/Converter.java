@@ -2,8 +2,11 @@ package com.cheryomushkin.petclinic.converters;
 
 import com.cheryomushkin.petclinic.domain.PetType;
 import com.cheryomushkin.petclinic.domain.Specialty;
+import com.cheryomushkin.petclinic.transport.CreatePetTypeDto;
+import com.cheryomushkin.petclinic.transport.CreateSpecialtyDto;
 import com.cheryomushkin.petclinic.transport.PetTypeDto;
 import com.cheryomushkin.petclinic.transport.SpecialtyDto;
+import com.cheryomushkin.petclinic.transport.UpdatePetTypeDto;
 import com.cheryomushkin.petclinic.transport.UpdateSpecialtyDto;
 
 import java.util.List;
@@ -16,4 +19,8 @@ public interface Converter {
     SpecialtyDto specialityToSpecialityDto(Specialty specialty);
     List<Specialty> updateSpecialtyDtosToSpecialties(Iterable<UpdateSpecialtyDto> specialtyDtos);
     Specialty updateSpecialtyDtoToSpecialty(UpdateSpecialtyDto specialtyDto);
+    PetType updatePetTypeDtoToPetType(Long id, UpdatePetTypeDto updatePetTypeDto);
+    PetType createPetTypeDtoToPetType(CreatePetTypeDto createPetTypeDto);
+    Specialty updateSpecialtyDtoToSpecialty(Long id, UpdateSpecialtyDto updateSpecialtyDto);
+    Specialty createSpecialtyDtoToSpecialty(CreateSpecialtyDto createSpecialtyDto);
 }

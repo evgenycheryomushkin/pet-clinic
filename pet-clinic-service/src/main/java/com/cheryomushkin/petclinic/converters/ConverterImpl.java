@@ -2,8 +2,11 @@ package com.cheryomushkin.petclinic.converters;
 
 import com.cheryomushkin.petclinic.domain.PetType;
 import com.cheryomushkin.petclinic.domain.Specialty;
+import com.cheryomushkin.petclinic.transport.CreatePetTypeDto;
+import com.cheryomushkin.petclinic.transport.CreateSpecialtyDto;
 import com.cheryomushkin.petclinic.transport.PetTypeDto;
 import com.cheryomushkin.petclinic.transport.SpecialtyDto;
+import com.cheryomushkin.petclinic.transport.UpdatePetTypeDto;
 import com.cheryomushkin.petclinic.transport.UpdateSpecialtyDto;
 import org.springframework.stereotype.Service;
 
@@ -39,17 +42,35 @@ public class ConverterImpl implements Converter {
     public SpecialtyDto specialityToSpecialityDto(Specialty specialty) {
         return new SpecialtyDto(specialty.ensureId(), specialty.getName());
     }
-
     @Override
     public List<Specialty> updateSpecialtyDtosToSpecialties(Iterable<UpdateSpecialtyDto> specialtyDtos) {
         return StreamSupport.stream(specialtyDtos.spliterator(), false)
                 .map(this::updateSpecialtyDtoToSpecialty).collect(Collectors.toList());
     }
-
     @Override
     public Specialty updateSpecialtyDtoToSpecialty(UpdateSpecialtyDto specialtyDto) {
         Specialty specialty = new Specialty(specialtyDto.getName());
         specialty.setId(specialtyDto.getId());
         return specialty;
+    }
+    @Override
+    public PetType updatePetTypeDtoToPetType(Long id, UpdatePetTypeDto updatePetTypeDto) {
+        PetType petType = new PetType(updatePetTypeDto.getName());
+        petType.setId(id);
+        return petType;
+    }
+    @Override
+    public PetType createPetTypeDtoToPetType(CreatePetTypeDto createPetTypeDto) {
+        return new PetType(createPetTypeDto.getName());
+    }
+    @Override
+    public Specialty updateSpecialtyDtoToSpecialty(Long id, UpdateSpecialtyDto updateSpecialtyDto) {
+        Specialty specialty = new Specialty(updateSpecialtyDto.getName());
+        specialty.setId(id);
+        return specialty;
+    }
+    @Override
+    public Specialty createSpecialtyDtoToSpecialty(CreateSpecialtyDto createSpecialtyDto) {
+        return new Specialty(createSpecialtyDto.getName());
     }
 }
