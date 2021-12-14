@@ -47,8 +47,9 @@ public class PetsControllerImpl implements PetsController {
     }
 
     @Override
-    public void add(AddPetDto addPetDto) {
+    public GetPetDto add(AddPetDto addPetDto) {
         Pet pet = petsConverter.addPetDtoAndOwnerIdToPet(addPetDto, addPetDto.getOwner().getId());
-        petRepository.save(pet);
+        pet = petRepository.save(pet);
+        return petsConverter.petAndOwnerToGetPetDto(pet, ownerRepository.findById(pet.getOwnerId()).orElseThrow());
     }
 }

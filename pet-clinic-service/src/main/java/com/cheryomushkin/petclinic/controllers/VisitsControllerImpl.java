@@ -28,9 +28,10 @@ public class VisitsControllerImpl implements VisitsController {
 
 
     @Override
-    public void create(AddVisitDto addVisitDto) {
+    public GetVisitDto create(AddVisitDto addVisitDto) {
         Visit visit = visitsConverter.addVisitDtoToVisit(addVisitDto);
-        visitRepository.save(visit);
+        visit = visitRepository.save(visit);
+        return get(visit.ensureId());
     }
 
     @Override

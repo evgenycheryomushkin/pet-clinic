@@ -34,9 +34,10 @@ public class SpecialtiesControllerImpl implements SpecialtiesController {
         return converter.specialityToSpecialityDto(specialty.get());
     }
     @Override
-    public Long create(CreateSpecialtyDto createSpecialtyDto) {
+    public SpecialtyDto create(CreateSpecialtyDto createSpecialtyDto) {
         Specialty specialty = converter.createSpecialtyDtoToSpecialty(createSpecialtyDto);
-        return specialtyRepository.save(specialty).ensureId();
+        specialty = specialtyRepository.save(specialty);
+        return converter.specialityToSpecialityDto(specialty);
     }
     @Override
     public void put(Long id, UpdateSpecialtyDto updateSpecialtyDto) {

@@ -34,9 +34,10 @@ public class OwnersControllerImpl implements OwnersController {
     }
 
     @Override
-    public Long add(AddOwnerDto ownerDto) {
+    public GetOwnerDto add(AddOwnerDto ownerDto) {
         Owner owner = ownersConverter.addOwnerDtoToOwner(ownerDto);
-        return ownerRepository.save(owner).ensureId();
+        owner = ownerRepository.save(owner);
+        return ownersConverter.ownerToGetOwnerDto(owner);
     }
 
     @Override

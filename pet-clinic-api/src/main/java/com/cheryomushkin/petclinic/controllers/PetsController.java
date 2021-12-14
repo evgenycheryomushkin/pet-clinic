@@ -21,7 +21,7 @@ public interface PetsController {
     @GetMapping("/{id}")
     @Nullable GetPetDto getById(@PathVariable Long id);
     @PostMapping("")
-    void add(@RequestBody @Valid AddPetDto addPetDto);
+    GetPetDto add(@RequestBody @Valid AddPetDto addPetDto);
     @PutMapping("/{id}")
     void update(@PathVariable Long id, @RequestBody @Valid UpdatePetDto updatePetDto);
     @DeleteMapping("/{id}")

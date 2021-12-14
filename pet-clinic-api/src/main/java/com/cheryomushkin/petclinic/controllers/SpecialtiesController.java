@@ -24,7 +24,7 @@ public interface SpecialtiesController {
     @GetMapping("/{id}")
     @Nullable SpecialtyDto get(@PathVariable Long id);
     @PostMapping("")
-    Long create(@RequestBody @Valid CreateSpecialtyDto createSpecialtyDto);
+    SpecialtyDto create(@RequestBody @Valid CreateSpecialtyDto createSpecialtyDto);
     @PutMapping("/{id}")
     void put(@PathVariable Long id, @RequestBody @Valid UpdateSpecialtyDto updateSpecialtyDto);
     @DeleteMapping("/{id}")

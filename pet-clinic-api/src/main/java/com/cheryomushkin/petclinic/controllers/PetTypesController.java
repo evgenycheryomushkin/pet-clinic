@@ -23,7 +23,7 @@ public interface PetTypesController {
     @GetMapping("/{id}")
     @Nullable PetTypeDto get(@PathVariable Long id);
     @PostMapping("")
-    Long create(@RequestBody CreatePetTypeDto createPetTypeDto);
+    PetTypeDto create(@RequestBody CreatePetTypeDto createPetTypeDto);
     @PutMapping("/{id}")
     void update(@PathVariable Long id, @RequestBody @Valid UpdatePetTypeDto updatePetTypeDto);
     @DeleteMapping("/{id}")

@@ -19,7 +19,7 @@ import javax.validation.Valid;
 @Validated
 public interface VisitsController {
     @PostMapping("")
-    void create(@RequestBody @Valid AddVisitDto addVisitDto);
+    GetVisitDto create(@RequestBody @Valid AddVisitDto addVisitDto);
     @GetMapping("/{id}")
     @Nullable GetVisitDto get(@PathVariable Long id);
     @PutMapping("/{id}")

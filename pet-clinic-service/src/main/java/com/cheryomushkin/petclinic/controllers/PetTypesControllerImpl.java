@@ -33,9 +33,10 @@ public class PetTypesControllerImpl implements PetTypesController {
         return converter.petTypeToPetTypeDto(petType.get());
     }
     @Override
-    public Long create(CreatePetTypeDto createPetTypeDto) {
+    public PetTypeDto create(CreatePetTypeDto createPetTypeDto) {
         PetType petType = converter.createPetTypeDtoToPetType(createPetTypeDto);
-        return petTypeRepository.save(petType).ensureId();
+        petType = petTypeRepository.save(petType);
+        return converter.petTypeToPetTypeDto(petType);
     }
 
     @Override

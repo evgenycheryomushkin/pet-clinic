@@ -22,9 +22,10 @@ public class VetsControllerImpl implements VetsController {
     final VetsConverter vetsConverter;
 
     @Override
-    public void create(CreateVetDto createVetDto) {
+    public GetVetDto create(CreateVetDto createVetDto) {
         Vet vet = vetsConverter.createVetDtoToVet(createVetDto);
-        vetRepository.save(vet);
+        vet = vetRepository.save(vet);
+        return vetsConverter.vetToGetVetDto(vet);
     }
     @Override
     public List<GetVetDto> list() {

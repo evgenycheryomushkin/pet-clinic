@@ -22,7 +22,7 @@ public interface OwnersController {
     @GetMapping("/{id}")
     @Nullable GetOwnerDto getById(@PathVariable Long id);
     @PostMapping("")
-    Long add(@RequestBody @Valid AddOwnerDto ownerDto);
+    GetOwnerDto add(@RequestBody @Valid AddOwnerDto ownerDto);
     @PutMapping("/{id}")
     void update(@PathVariable Long id, @RequestBody @Valid AddOwnerDto addOwnerDto);
     @DeleteMapping("/{id}")

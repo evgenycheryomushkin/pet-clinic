@@ -21,7 +21,7 @@ import java.util.List;
 @Validated
 public interface VetsController {
     @PostMapping("")
-    void create(@RequestBody @Valid CreateVetDto createVetDto);
+    GetVetDto create(@RequestBody @Valid CreateVetDto createVetDto);
     @GetMapping("")
     List<GetVetDto> list();
     @GetMapping("/{id}")
