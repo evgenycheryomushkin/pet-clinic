@@ -1,6 +1,6 @@
 package com.cheryomushkin.petclinic.transport.visits;
 
-import com.cheryomushkin.petclinic.transport.PetTypeDto;
+import com.cheryomushkin.petclinic.transport.common.PetTypeDto;
 import com.cheryomushkin.petclinic.transport.pets.GetPetOwnerDto;
 import lombok.Value;
 

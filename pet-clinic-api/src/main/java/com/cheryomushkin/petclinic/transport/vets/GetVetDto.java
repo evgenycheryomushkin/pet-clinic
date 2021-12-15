@@ -1,6 +1,6 @@
 package com.cheryomushkin.petclinic.transport.vets;
 
-import com.cheryomushkin.petclinic.transport.SpecialtyDto;
+import com.cheryomushkin.petclinic.transport.common.SpecialtyDto;
 import lombok.Value;
 
 import java.util.List;

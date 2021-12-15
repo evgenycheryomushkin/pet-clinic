@@ -1,6 +1,6 @@
 package com.cheryomushkin.petclinic.transport.vets;
 
-import com.cheryomushkin.petclinic.transport.UpdateSpecialtyDto;
+import com.cheryomushkin.petclinic.transport.common.UpdateSpecialtyDto;
 import lombok.Value;
 
 import javax.validation.constraints.NotEmpty;

@@ -2,12 +2,12 @@ package com.cheryomushkin.petclinic.converters;
 
 import com.cheryomushkin.petclinic.domain.PetType;
 import com.cheryomushkin.petclinic.domain.Specialty;
-import com.cheryomushkin.petclinic.transport.CreatePetTypeDto;
-import com.cheryomushkin.petclinic.transport.CreateSpecialtyDto;
-import com.cheryomushkin.petclinic.transport.PetTypeDto;
-import com.cheryomushkin.petclinic.transport.SpecialtyDto;
-import com.cheryomushkin.petclinic.transport.UpdatePetTypeDto;
-import com.cheryomushkin.petclinic.transport.UpdateSpecialtyDto;
+import com.cheryomushkin.petclinic.transport.common.CreatePetTypeDto;
+import com.cheryomushkin.petclinic.transport.common.CreateSpecialtyDto;
+import com.cheryomushkin.petclinic.transport.common.PetTypeDto;
+import com.cheryomushkin.petclinic.transport.common.SpecialtyDto;
+import com.cheryomushkin.petclinic.transport.common.UpdatePetTypeDto;
+import com.cheryomushkin.petclinic.transport.common.UpdateSpecialtyDto;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

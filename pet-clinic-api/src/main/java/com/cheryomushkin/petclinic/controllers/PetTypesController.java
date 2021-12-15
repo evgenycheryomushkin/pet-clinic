@@ -1,8 +1,8 @@
 package com.cheryomushkin.petclinic.controllers;
 
-import com.cheryomushkin.petclinic.transport.CreatePetTypeDto;
-import com.cheryomushkin.petclinic.transport.PetTypeDto;
-import com.cheryomushkin.petclinic.transport.UpdatePetTypeDto;
+import com.cheryomushkin.petclinic.transport.common.CreatePetTypeDto;
+import com.cheryomushkin.petclinic.transport.common.PetTypeDto;
+import com.cheryomushkin.petclinic.transport.common.UpdatePetTypeDto;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;

@@ -1,4 +1,4 @@
-package com.cheryomushkin.petclinic.transport;
+package com.cheryomushkin.petclinic.transport.common;
 
 import lombok.Value;
 

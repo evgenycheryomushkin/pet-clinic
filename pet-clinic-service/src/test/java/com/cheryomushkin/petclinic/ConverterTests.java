@@ -2,7 +2,7 @@ package com.cheryomushkin.petclinic;
 
 import com.cheryomushkin.petclinic.converters.PetsConverter;
 import com.cheryomushkin.petclinic.domain.Pet;
-import com.cheryomushkin.petclinic.transport.PetTypeDto;
+import com.cheryomushkin.petclinic.transport.common.PetTypeDto;
 import com.cheryomushkin.petclinic.transport.pets.AddPetOwnerDto;
 import com.cheryomushkin.petclinic.transport.pets.UpdatePetDto;
 import lombok.extern.slf4j.Slf4j;
