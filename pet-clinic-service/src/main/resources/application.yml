@@ -6,14 +6,20 @@ logging:
         type: trace
 
 spring:
+  datasource:
+    generate-unique-name: false
   mvc:
     log-request-details: true
   jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
     properties:
       hibernate:
         show_sql: true
         format_sql: true
         use_sql_comments: true
+        dialect: org.hibernate.dialect.H2Dialect
 
 server:
   port: 9966

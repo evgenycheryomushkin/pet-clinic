@@ -16,20 +16,15 @@ import java.util.Objects;
 @Getter
 @Setter
 public class Owner extends Identifier {
-    @NotNull @NotEmpty
-    String firstName;
-    @NotNull @NotEmpty
-    String lastName;
-    @NotNull @NotEmpty
-    String address;
-    @NotNull @NotEmpty
-    String city;
-    @NotNull @NotEmpty
-    String telephone;
+    @NotNull @NotEmpty String firstName;
+    @NotNull @NotEmpty String lastName;
+    @NotNull @NotEmpty String address;
+    @NotNull @NotEmpty String city;
+    @NotNull @NotEmpty String telephone;
+    @NotNull Boolean deleted = false;
 
     @OneToMany(mappedBy = "ownerId")
-    @NotNull
-    List<Pet> pets;
+    @NotNull List<Pet> pets;
 
     @SuppressWarnings("initialization.fields.uninitialized")
     protected Owner() {}

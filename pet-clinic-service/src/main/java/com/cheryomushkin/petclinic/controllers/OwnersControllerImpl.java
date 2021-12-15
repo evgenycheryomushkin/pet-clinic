@@ -22,7 +22,7 @@ public class OwnersControllerImpl implements OwnersController {
 
     @Override
     public Iterable<GetOwnerDto> list() {
-        Iterable<Owner> owners = ownerRepository.findAll();
+        List<Owner> owners = ownerRepository.findAllByDeletedFalse();
         return ownersConverter.ownersToGetOwnerDtos(owners);
     }
 
@@ -48,7 +48,9 @@ public class OwnersControllerImpl implements OwnersController {
 
     @Override
     public void delete(Long id) {
-        ownerRepository.deleteById(id);
+        Owner owner = ownerRepository.findById(id).orElseThrow(); //todo error 400
+        owner.setDeleted(true);
+        ownerRepository.save(owner);
     }
 
     @Override
