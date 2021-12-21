@@ -6,6 +6,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -23,7 +24,7 @@ public class Owner extends Identifier {
     @NotNull @NotEmpty String telephone;
     @NotNull Boolean deleted = false;
 
-    @OneToMany(mappedBy = "ownerId")
+    @OneToMany(mappedBy = "ownerId", fetch = FetchType.LAZY)
     @NotNull List<Pet> pets;
 
     @SuppressWarnings("initialization.fields.uninitialized")

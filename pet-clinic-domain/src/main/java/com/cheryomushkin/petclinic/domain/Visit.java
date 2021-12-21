@@ -16,6 +16,10 @@ import java.util.Objects;
 @Getter
 @Setter
 public class Visit extends Identifier {
+    @NotNull LocalDate date;
+    @Lob
+    @NotNull @NotEmpty String description;
+    @NotNull Long petId;
 
     @SuppressWarnings("initialization.fields.uninitialized")
     protected Visit() {}
@@ -25,11 +29,6 @@ public class Visit extends Identifier {
         this.description = description;
         this.petId = petId;
     }
-
-    @NotNull LocalDate date;
-    @Lob
-    @NotNull @NotEmpty String description;
-    @NotNull Long petId;
 
     @Override
     public boolean equals(@Nullable Object o) {

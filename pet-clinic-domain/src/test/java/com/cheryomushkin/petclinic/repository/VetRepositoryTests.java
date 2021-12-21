@@ -14,6 +14,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @SpringBootTest
+@Transactional
 public class VetRepositoryTests {
     final VetRepository vetRepository;
     final SpecialtyRepository specialtyRepository;
@@ -25,7 +26,6 @@ public class VetRepositoryTests {
     }
 
     @Test
-    @Transactional
     public void test() {
         Specialty specialty = new Specialty("Крупные животные");
         specialty = specialtyRepository.save(specialty);

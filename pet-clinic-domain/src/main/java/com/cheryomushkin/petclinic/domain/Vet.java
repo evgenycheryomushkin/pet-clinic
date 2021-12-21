@@ -6,6 +6,7 @@ import org.checkerframework.checker.nullness.qual.Nullable;
 import org.hibernate.Hibernate;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -18,7 +19,7 @@ import java.util.Objects;
 public class Vet extends Identifier {
     @NotNull @NotEmpty String firstName;
     @NotNull @NotEmpty String lastName;
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @NotNull List<Specialty> specialties;
 
     @SuppressWarnings("initialization.fields.uninitialized")

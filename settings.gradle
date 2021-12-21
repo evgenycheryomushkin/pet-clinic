@@ -22,7 +22,6 @@ dependencyResolutionManagement {
 
             alias('jsr305').to('com.google.code.findbugs', 'jsr305').version('3.0.2')
 
-
             // spring
             alias('spring-boot').toPluginId('org.springframework.boot').version('2.5.5')
             alias('spring-dm').toPluginId('io.spring.dependency-management').version('1.0.11.RELEASE')
