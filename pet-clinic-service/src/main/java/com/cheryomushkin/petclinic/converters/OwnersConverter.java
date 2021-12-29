@@ -15,7 +15,7 @@ public interface OwnersConverter {
     List<VisitDto> visitsToVisitDtos(List<Visit> visits);
     VisitDto visitToVisitDto(Visit visit);
     GetOwnerDto ownerToGetOwnerDto(Owner owner);
-    Iterable<GetOwnerDto> ownersToGetOwnerDtos(Iterable<Owner> owners);
+    List<GetOwnerDto> ownersToGetOwnerDtos(Iterable<Owner> owners);
     Owner addOwnerDtoToOwner(AddOwnerDto addOwnerDto);
     Owner addOwnerDtoIdToOwner(Long id, AddOwnerDto addOwnerDto);
 }

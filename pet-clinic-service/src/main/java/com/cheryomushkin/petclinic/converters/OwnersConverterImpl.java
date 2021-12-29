@@ -45,7 +45,7 @@ public class OwnersConverterImpl implements OwnersConverter {
     }
 
     @Override
-    public Iterable<GetOwnerDto> ownersToGetOwnerDtos(Iterable<Owner> owners) {
+    public List<GetOwnerDto> ownersToGetOwnerDtos(Iterable<Owner> owners) {
         return StreamSupport.stream(owners.spliterator(), false)
                 .map(this::ownerToGetOwnerDto).collect(Collectors.toList());
     }

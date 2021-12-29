@@ -4,21 +4,16 @@ import com.cheryomushkin.petclinic.transport.owners.AddOwnerDto;
 import com.cheryomushkin.petclinic.transport.owners.GetOwnerDto;
 import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequestMapping("/petclinic/api/owners")
 @Validated
 public interface OwnersController {
     @GetMapping("")
-    Iterable<GetOwnerDto> list();
+    List<GetOwnerDto> list();
     @GetMapping("/{id}")
     @Nullable GetOwnerDto getById(@PathVariable Long id);
     @PostMapping("")

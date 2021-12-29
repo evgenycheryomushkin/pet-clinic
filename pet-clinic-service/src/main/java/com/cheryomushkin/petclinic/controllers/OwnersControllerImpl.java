@@ -21,7 +21,7 @@ public class OwnersControllerImpl implements OwnersController {
     private final OwnerRepository ownerRepository;
 
     @Override
-    public Iterable<GetOwnerDto> list() {
+    public List<GetOwnerDto> list() {
         List<Owner> owners = ownerRepository.findAllByDeletedFalse();
         return ownersConverter.ownersToGetOwnerDtos(owners);
     }
