@@ -1,6 +1,5 @@
-# Pet clinic
-
 [![<evgenycheryomushkin>](https://circleci.com/gh/evgenycheryomushkin/pet-clinic.svg?style=shield)](https://app.circleci.com/pipelines/github/evgenycheryomushkin/pet-clinic?branch=master&filter=all)
+# Pet clinic
 
 Task from Springframework Beginner to Guru Udemy course.
 

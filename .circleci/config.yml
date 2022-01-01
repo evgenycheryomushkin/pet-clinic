@@ -13,7 +13,6 @@ jobs:
     resource_class: small
     working_directory: ~/pet-clinic
     environment:
-      JVM_OPTS: -Xmx3g
       GRADLE_OPTS: -Dorg.gradle.daemon=false
     steps:
       - checkout
@@ -23,7 +22,7 @@ jobs:
             - << parameters.version >>-dependencies-{{ checksum "checksum.tmp.txt" }}
             - << parameters.version >>-dependencies-
 
-      - run: gradle dependencies
+      - run: ./gradlew dependencies
 
       - save_cache:
           paths:
@@ -31,4 +30,4 @@ jobs:
           key: << parameters.version >>-dependencies-{{ checksum "checksum.tmp.txt" }}
 
       # run tests!
-      - run: gradle test
+      - run: ./gradlew test
