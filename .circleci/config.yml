@@ -4,10 +4,16 @@ jobs:
     parameters:
       version:
         type: string
-        default: v1
+        default: v1.1
       gradles:
         type: string
-        default: "settings.gradle pet-clinic-service/build.gradle pet-clinic-domain/build.gradle pet-clinic-api/build.gradle buildSrc/src/main/groovy/database-conventions.gradle buildSrc/src/main/groovy/java-conventions.gradle gradle/wrapper/gradle-wrapper.properties"
+        default: "settings.gradle 
+        pet-clinic-service/build.gradle 
+        pet-clinic-domain/build.gradle 
+        pet-clinic-api/build.gradle 
+        buildSrc/src/main/groovy/database-conventions.gradle 
+        buildSrc/src/main/groovy/java-conventions.gradle 
+        gradle/wrapper/gradle-wrapper.properties"
     docker:
       - image: cimg/openjdk:11.0.13
     resource_class: small
